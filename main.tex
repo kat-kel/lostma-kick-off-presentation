@@ -1,0 +1,47 @@
+\documentclass{beamer}
+\input{FrontMatter/preamble.tex}
+\usetheme{ENC-ERC}
+
+%%% Modify the presentation's bibliographic details
+\title{Modeling Medieval Romances}
+\subtitle{How to build an open database of works, traditions, and manuscripts}
+\date{28 May 2024}
+\author[Firstname Lastname]{Kelly Christensen}
+\institute[ENC]
+{
+  LostMa\\
+  École nationale des chartes
+}
+
+
+%%% Start of the presentation's content
+\begin{document}
+
+
+\frame{\titlepage}
+
+
+\AtBeginSection[]
+{
+ \begin{frame}[noframenumbering,plain]{Outline}
+    \tableofcontents[currentsection, sectionstyle=show/shaded, subsectionstyle=show/shaded/hide]
+ \end{frame} 
+}
+
+\AtBeginSubsection[]
+{
+ \begin{frame}[noframenumbering,plain]{Outline}
+    \tableofcontents[currentsection, sectionstyle=show/shaded, currentsubsection, subsectionstyle=show/shaded]
+    
+ \end{frame} 
+}
+
+\input{sections/intro}
+
+\section{Entities}
+\input{sections/concepts}
+
+\section{Entity Relationships}
+\input{sections/relationships}
+
+\end{document}

@@ -1,0 +1,182 @@
+\tikzstyle{arrow} = [thick,->,>=stealth]
+    \tikzstyle{cycle} = [
+        rectangle,
+        minimum width=1.5cm,
+        minimum height=1cm,
+        text width=1.5cm,
+        text centered,
+        draw=black,
+        fill=orange!30
+    ]
+    \tikzstyle{geste} = [
+        rectangle,
+        minimum width=1.5cm,
+        minimum height=1cm,
+        text width=1.5cm,
+        text centered,
+        draw=black,
+        fill=green!30
+    ]
+    \tikzstyle{chanson} = [
+        rectangle,
+        minimum width=1.5cm,
+        minimum height=1cm,
+        text width=1.5cm,
+        text centered,
+        draw=black,
+        fill=blue!30
+    ]
+    \tikzstyle{witness} = [
+        rectangle,
+        minimum width=1.5cm,
+        minimum height=1cm,
+        text width=1.5cm,
+        text centered,
+        draw=black,
+        fill=cyan!30
+    ]
+    \tikzstyle{doc} = [
+        rectangle,
+        minimum width=2cm,
+        minimum height=1cm,
+        text width=2cm,
+        text centered,
+        draw=black,
+        fill=red!30
+    ]
+
+\begin{frame}
+    \frametitle{5 core entities: from abstract to concrete}
+
+    \centering
+
+    \smartdiagramset{
+        priority arrow height advance=1.2cm,
+        priority arrow head extend=0.18cm,
+        priority arrow width=2cm,
+        priority tick size=3pt,
+        }
+    \tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=10,}}
+    \smartdiagram[priority descriptive diagram]{
+        \textbf{Historical Document}:\\A physical copy/edition of the instance,
+        \textbf{Witness}:\\An instance of the version of a story,
+        \textbf{Text [\textit{Chanson}]}:\\A version of the story,
+        \textbf{Work [\textit{Geste}]}:\\A story,
+        \textbf{Cycle}:\\A collection of stories
+    }
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{5 core entities: Marvel example 1}
+
+    \centering
+
+    \smartdiagramset{
+        priority arrow height advance=1.2cm,
+        priority arrow head extend=0.18cm,
+        priority arrow width=2cm,
+        priority tick size=3pt,
+        }
+    \tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=10,}}
+    \smartdiagram[priority descriptive diagram]{
+        \textbf{Historical Document}:\\A physical copy of issue 39,
+        \textbf{Witness (instance of version)}:\\"How Green Was My Goblin!"\text{,} \textit{The Amazing Spider-Man}\text{,} vol. 1\text{,} no. 39 (1966),
+        \textbf{Text (version of story)}:\\Green Goblin follows Peter down an alley,
+        \textbf{Work (aka "story")}:\\Green Goblin learns of Spider-Man's identity,
+        \textbf{Cycle}:\\Spider-Man - Peter Parker
+    }
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{5 core entities: Marvel example 2}
+
+    \centering
+
+    \smartdiagramset{
+        priority arrow height advance=1.2cm,
+        priority arrow head extend=0.18cm,
+        priority arrow width=2cm,
+        priority tick size=3pt,
+        }
+    \tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=10,}}
+    \smartdiagram[priority descriptive diagram]{
+        \textbf{Historical Document}:\\A DVD copy of the film,
+        \textbf{Witness (instance of version)}:\\\textit{Spider-Man} (2002)\\Bibliothèque du cinéma François Truffaut - P RAIM,
+        \textbf{Text (version of story)}:\\Goblin notices Peter's wound during dinner,
+        \textbf{Work (aka "story")}:\\Green Goblin learns of Spider-Man's identity,
+        \textbf{Cycle}:\\Spider-Man - Peter Parker
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{5 core entities: \textsc{LostMa} example}
+
+    \centering
+
+    \smartdiagramset{
+        priority arrow height advance=1.2cm,
+        priority arrow head extend=0.18cm,
+        priority arrow width=2cm,
+        priority tick size=3pt,
+        }
+    \tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=10,}}
+    \smartdiagram[priority descriptive diagram]{
+        \textbf{Historical Document}:\\Folios 1ra-68b of Fr. Z. 4 (=225),
+        \textbf{Witness}:\\Manuscript with siglum V$^1$,
+        \textbf{Text}:\\The Franco-Italian chanson \textit{Romanus Aspremontis},
+        \textbf{Work}:\\The geste \textit{Aspremont},
+        \textbf{Cycle}:\\\textit{Charlemagne - Agolant}
+    }
+        
+\end{frame}
+
+\begin{frame}{Parent-children relationships}
+
+    \tiny
+    
+    \begin{tikzpicture}[node distance=2.25cm]
+        \node [cycle] (cycle0) {\textbf{Cycle}: \textit{Charlemagne}};
+        \node [cycle, below of=cycle0] (cycle1) {\textbf{Cycle}: \textit{Charlemagne - Agolant}};
+        \draw [arrow] (cycle0) -- (cycle1);
+        
+        \node [geste, right of=cycle1, yshift=-1cm] (work) {\textbf{Work}: \textit{Aspremont}};
+        \node [geste, right of=cycle1, yshift=1cm] (work0) {\textbf{Work}: \textit{Agolant}};
+        \draw [arrow] (cycle1) -- (work);
+        \draw [arrow] (cycle1) -- (work0);
+
+        \node [chanson, right of=work, yshift=-1cm] (text0) {\textbf{Text}: \textit{Aspremont} (Arlima 762)};
+        \draw [arrow] (work) -- (text0);
+
+        \node [witness, right of=text0, yshift=3.75cm] (witness0) {\textbf{Witness}:\\Cha};
+        \draw [arrow] (text0) -- (witness0);
+
+        \node [chanson, right of=work, yshift=0.5cm] (text1) {\textbf{Text}: \textit{Apremonte} (Arlima 761)};
+        \draw [arrow] (work) -- (text1);
+
+        \node [witness, right of=text0, yshift=2.25cm] (witness4) {\textbf{Witness}:\\Trento};
+        \node [witness, right of=text0, yshift=0.75cm] (witness1) {\textbf{Witness}:\\F};
+        \node [witness, right of=text0, yshift=-0.75cm] (witness2) {\textbf{Witness}:\\V$^1$};
+        \node [witness, right of=text0, yshift=-2.25cm] (witness3) {\textbf{Witness}:\\V$^2$};
+        \draw [arrow] (text0) -- (witness4);
+        \draw [arrow] (text0) -- (witness1);
+        \draw [arrow] (text0) -- (witness2);
+        \draw [arrow] (text0) -- (witness3);
+
+        \node [doc, right of=witness0] (doc0) {\textbf{Document}:\\Chantilly\text{,} Bibl. du Château\text{,} 470};
+        \node [doc, right of=witness1] (doc1) {\textbf{Document}:\\Firenze\text{,} Bibl. nazionale centrale\text{,} Magl. cl. VII\text{,} 932};
+        \node [doc, right of=witness4] (doc4) {\textbf{Document}:\\Trento\text{,} Bibl. di San Bernardino\text{,} Arch. 320};
+        \node [doc, right of=witness2] (doc2) {\textbf{Document}:\\Venezia\text{,}Bibl. nazionale Marciana\text{,} Fr. Z. 4\text{,} f. 1ra-68b};
+        \node [doc, right of=witness3] (doc3) {\textbf{Document}:\\Venezia\text{,}Bibl. nazionale Marciana\text{,} Fr. Z. 6(=226)\text{,} f. 6r-69r};
+        \draw [arrow] (witness0) -- (doc0);
+        \draw [arrow] (witness1) -- (doc1);
+        \draw [arrow] (witness2) -- (doc2);
+        \draw [arrow] (witness3) -- (doc3);
+        \draw [arrow] (witness4) -- (doc4);
+
+    \end{tikzpicture}
+
+\end{frame}
+
