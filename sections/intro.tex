@@ -1,26 +1,28 @@
 \definecolor{encred}{RGB}{192,29,50}
 
-\begin{frame}{Database of Works, Traditions, and Manuscripts}
+\begin{frame}{Works, Traditions, and Manuscripts}
 
-    Our database of works, traditions, and manuscripts relies on the following 6 entities:
+    Our database is oriented around 6 entities: cycles, works, texts, stemmata, witnesses, and historical documents.
+
+    \vspace{1em}
 
     \centering
     \tiny
 
-    \begin{tikzpicture}[grow cyclic, text width=1.1cm, align=flush center, every node/.style=concept, concept color=encred!10,
+    \begin{tikzpicture}[grow cyclic, text width=1.1cm, align=flush center, every node/.style=concept, concept color=gray!30,
         level 1/.style={level distance=1.75cm,sibling angle=135},
         level 2/.style={level distance=1.75cm,sibling angle=90}]
         
         \node{{Database}}
-            child{ node{Traditions}
-                child [concept color=gray!30] {node{Stemma}}
+            child [concept color=gray!30] { node{Traditions}
+                child [concept color=yellow!30] {node{Stemma}}
             }
-            child { node{Works}
+            child [concept color=gray!30] { node{Works}
                 child [concept color=blue!30] {node{Texts (\textit{Chans.})}}
                 child [concept color=green!30] {node{Works (\textit{Gestes})}}
                 child [concept color=orange!30] {node{Cycles}}
             }
-            child{ node{Manuscripts}
+            child [concept color=gray!30] { node{Manuscripts}
                 child [concept color=cyan!30] {node{Witness}}
                 child [concept color=red!40] {node{Historical document}}
             }
