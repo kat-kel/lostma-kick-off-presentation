@@ -125,8 +125,8 @@
     \tikzset{priority arrow/.append style={rotate=180,anchor=0,xshift=10,}}
     \smartdiagram[priority descriptive diagram]{
         \textbf{Historical Document}:\\Folios 1ra-68b of Fr. Z. 4 (=225),
-        \textbf{Witness}:\\Manuscript with siglum V$^1$,
-        \textbf{Text}:\\The Franco-Italian chanson \textit{Romanus Aspremontis},
+        \textbf{Witness}:\\Manuscript with siglum V$^1$\\Fr. Z. 4 (=225),
+        \textbf{Text}:\\The Franco-Italian chanson "Romanus Aspremontis",
         \textbf{Work}:\\The geste \textit{Aspremont},
         \textbf{Cycle}:\\\textit{Charlemagne - Agolant}
     }
@@ -138,24 +138,22 @@
     \tiny
     
     \begin{tikzpicture}[node distance=2.25cm]
-        \node [cycle] (cycle0) {\textbf{Cycle}: \textit{Charlemagne}};
-        \node [cycle, below of=cycle0] (cycle1) {\textbf{Cycle}: \textit{Charlemagne - Agolant}};
+        \node [cycle] (cycle0) {\textbf{Cycle}:\\\textit{Charlemagne}};
+        \node [cycle, below of=cycle0] (cycle1) {\textbf{Cycle}:\\\textit{Charlemagne - Agolant}};
         \draw [arrow] (cycle0) -- (cycle1);
         
-        \node [geste, right of=cycle1, yshift=-1cm] (work) {\textbf{Work}: \textit{Aspremont}};
-        \node [geste, right of=cycle1, yshift=1cm] (work0) {\textbf{Work}: \textit{Agolant}};
+        \node [geste, right of=cycle1, yshift=-1cm] (work) {\textbf{Work}:\\\textit{Aspremont}};
+        \node [geste, right of=cycle1, yshift=1cm] (work0) {\textbf{Work}:\\\textit{Agolant}};
         \draw [arrow] (cycle1) -- (work);
         \draw [arrow] (cycle1) -- (work0);
 
-        \node [chanson, right of=work, yshift=-1cm] (text0) {\textbf{Text}: \textit{Aspremont} (Arlima 762)};
+        \node [chanson, right of=work, yshift=-1cm] (text1) {\textbf{Text}:\\\textit{Aspremont} (Arlima 762)};
+        \node [chanson, right of=work, yshift=0.5cm] (text0) {\textbf{Text}:\\\textit{Apremonte} (Arlima 761)};
+        \draw [arrow] (work) -- (text1);
         \draw [arrow] (work) -- (text0);
 
         \node [witness, right of=text0, yshift=3.75cm] (witness0) {\textbf{Witness}:\\Cha};
         \draw [arrow] (text0) -- (witness0);
-
-        \node [chanson, right of=work, yshift=0.5cm] (text1) {\textbf{Text}: \textit{Apremonte} (Arlima 761)};
-        \draw [arrow] (work) -- (text1);
-
         \node [witness, right of=text0, yshift=2.25cm] (witness4) {\textbf{Witness}:\\Trento};
         \node [witness, right of=text0, yshift=0.75cm] (witness1) {\textbf{Witness}:\\F};
         \node [witness, right of=text0, yshift=-0.75cm] (witness2) {\textbf{Witness}:\\V$^1$};
